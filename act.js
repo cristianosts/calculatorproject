@@ -24,6 +24,15 @@ class Calculator {
 
   //processar todas as operações
   processOperation(operation) {
+
+    //checar se o valor de baixo está vazio
+    if (this.currentOperationText.innerText === '') {
+      //mudar operação 
+      if (this.previousOperationText.innerText !== ''){
+         this.changeOperation(operation)
+      }
+      return
+    }
    
     // pegar valor atual e valor anterior
     let operationValue
@@ -36,17 +45,17 @@ class Calculator {
         this.updateScreen(operationValue, operation, current, previous)
         break
       case '-':
-        operationValue = previous + current
+        operationValue = previous - current
         this.updateScreen(operationValue, operation, current, previous)
-       break
-      case '+':
-        operationValue = previous + current
+        break
+      case '/':
+        operationValue = previous / current
         this.updateScreen(operationValue, operation, current, previous)
-       break
-      case '+':
-        operationValue = previous + current
+        break
+      case '*':
+        operationValue = previous * current
         this.updateScreen(operationValue, operation, current, previous)
-       break
+        break
       default:
         return
     }
@@ -73,6 +82,8 @@ class Calculator {
         this.currentOperationText.innerText = ''
     }
   }
+
+  //mudar a operação matemática
 
 }
 
