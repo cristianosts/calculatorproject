@@ -84,7 +84,16 @@ class Calculator {
   }
 
   //mudar a operação matemática
+  changeOperation(operation) {
+    const mathOperation = ['+', '/', '*', '-']
+    
+    if (!mathOperation.includes(operation)) {
+      return
+    }
 
+    this.previousOperationText.innerText = this.previousOperationText.innerText.slice(0, -1) + operation
+  }
+   
 }
 
 const calc = new Calculator(previousOperationText,currentOperationText)
